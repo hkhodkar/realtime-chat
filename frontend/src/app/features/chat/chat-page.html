@@ -125,7 +125,7 @@
 
       <app-composer
         [roomName]="active.name"
-        [connected]="room.status() === 'open'"
+        [status]="room.status()"
         (send)="send($event)"
         (typing)="room.notifyTyping()"
       />

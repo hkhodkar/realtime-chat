@@ -216,7 +216,10 @@ export class BotCrew {
     this.later(1500 + this.random() * 2000, () => {
       this.busyRooms.delete(roomId);
       this.host.publish({ type: 'typing', username: bot.username, active: false }, roomId);
-      this.host.postMessage(roomId, bot, compose(bot, room.name));
+      // the room may be gone after a reset of the demo data
+      if (this.host.db.rooms().some((item) => item.id === roomId)) {
+        this.host.postMessage(roomId, bot, compose(bot, room.name));
+      }
     });
   }
 

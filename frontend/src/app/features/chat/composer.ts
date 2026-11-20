@@ -9,9 +9,13 @@ import {
   viewChild,
 } from '@angular/core';
 import { MESSAGE_MAX_LENGTH, textLength } from '../../core/models/chat.models';
+import { ConnectionStatus } from '../../core/socket/room-connection';
 import { Icon } from '../../shared/ui/icon';
 
-const EMOJI = '😀 😂 😊 😍 🤔 😅 😎 🥳 😢 😮 🙃 😴 👍 👎 👏 🙌 🙏 💪 👋 🤝 ❤️ 🔥 🎉 ✅ 🚀 💡 👀 💯 ☕ 🍕 🐛 ⚡'.split(' ');
+const EMOJI =
+  '😀 😂 😊 😍 🤔 😅 😎 🥳 😢 😮 🙃 😴 👍 👎 👏 🙌 🙏 💪 👋 🤝 ❤️ 🔥 🎉 ✅ 🚀 💡 👀 💯 ☕ 🍕 🐛 ⚡'.split(
+    ' ',
+  );
 
 @Component({
   selector: 'app-composer',
@@ -26,7 +30,7 @@ const EMOJI = '😀 😂 😊 😍 🤔 😅 😎 🥳 😢 😮 🙃 😴 👍 
 })
 export class Composer {
   readonly roomName = input('');
-  readonly connected = input(true);
+  readonly status = input<ConnectionStatus>('open');
 
   readonly send = output<string>();
   readonly typing = output<void>();
@@ -42,12 +46,22 @@ export class Composer {
   protected readonly length = computed(() => textLength(this.text().trim()));
   protected readonly tooLong = computed(() => this.length() > MESSAGE_MAX_LENGTH);
   protected readonly showCounter = computed(() => this.length() > MESSAGE_MAX_LENGTH - 200);
+  protected readonly connected = computed(() => this.status() === 'open');
   protected readonly canSend = computed(
     () => this.connected() && this.length() > 0 && !this.tooLong(),
   );
-  protected readonly placeholder = computed(() =>
-    this.connected() ? `Message #${this.roomName()}` : 'Reconnecting… you can keep typing',
-  );
+  protected readonly placeholder = computed(() => {
+    switch (this.status()) {
+      case 'open':
+        return `Message #${this.roomName()}`;
+      case 'reconnecting':
+        return 'Reconnecting… you can keep typing';
+      case 'closed':
+        return 'Disconnected';
+      default:
+        return 'Connecting…';
+    }
+  });
 
   protected onInput(event: Event): void {
     this.text.set((event.target as HTMLTextAreaElement).value);

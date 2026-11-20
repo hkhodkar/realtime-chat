@@ -73,7 +73,7 @@ describe('Composer', () => {
   });
 
   it('keeps the draft while disconnected', async () => {
-    fixture.componentRef.setInput('connected', false);
+    fixture.componentRef.setInput('status', 'reconnecting');
     await type('still here');
     press('Enter');
     expect(sent).toEqual([]);

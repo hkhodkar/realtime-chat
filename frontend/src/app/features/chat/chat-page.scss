@@ -10,6 +10,8 @@
   display: grid;
   grid-template-columns: 290px minmax(0, 1fr) 250px;
   position: relative;
+  // keeps the off-canvas panels from widening the page
+  overflow: hidden;
 }
 
 .sidebar {

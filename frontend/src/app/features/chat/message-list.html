@@ -61,17 +61,8 @@
                         >{{ clock(message.created_at) }}</time
                       >
                     }
-                    <p class="text" [class.jumbo]="jumbo(message.body)">
-                      @for (part of linkify(message.body); track $index) {
-                        @if (part.href) {
-                          <a [href]="part.href" target="_blank" rel="noopener noreferrer">{{
-                            part.text
-                          }}</a>
-                        } @else {
-                          {{ part.text }}
-                        }
-                      }
-                    </p>
+                    <!-- prettier-ignore -->
+                    <p class="text" [class.jumbo]="jumbo(message.body)">@for (part of linkify(message.body); track $index) {@if (part.href) {<a [href]="part.href" target="_blank" rel="noopener noreferrer">{{ part.text }}</a>} @else {<span>{{ part.text }}</span>}}</p>
                   </div>
                 }
               </div>

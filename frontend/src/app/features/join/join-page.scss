@@ -244,4 +244,14 @@ fieldset {
   .card {
     padding: 24px 20px;
   }
+
+  .swatches {
+    gap: 8px;
+  }
+
+  .swatch .dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
 }
