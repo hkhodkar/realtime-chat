@@ -1,0 +1,565 @@
+{
+  "users": [
+    {
+      "username": "Sara",
+      "color": "#db2777"
+    },
+    {
+      "username": "Daniel",
+      "color": "#2563eb"
+    },
+    {
+      "username": "Priya",
+      "color": "#7c3aed"
+    },
+    {
+      "username": "Tom",
+      "color": "#2f9e44"
+    },
+    {
+      "username": "Lena",
+      "color": "#e2681e"
+    },
+    {
+      "username": "Omar",
+      "color": "#0d9488"
+    }
+  ],
+  "rooms": [
+    {
+      "name": "general",
+      "description": "Company-wide chatter and announcements",
+      "messages": [
+        {
+          "author": "Daniel",
+          "body": "Morning all ☀️ Reminder: sprint planning at 10:30 in the big room",
+          "minutes_ago": 3298
+        },
+        {
+          "author": "Priya",
+          "body": "Thanks! Can we push the retro to Thursday? Half of design is out tomorrow",
+          "minutes_ago": 3296
+        },
+        {
+          "author": "Daniel",
+          "body": "Sure, moved it. Calendar invite is updated",
+          "minutes_ago": 3295
+        },
+        {
+          "author": "Sara",
+          "body": "I'll bring the new onboarding flow to planning, it's ready for review",
+          "minutes_ago": 3289
+        },
+        {
+          "author": "Tom",
+          "body": "🙌",
+          "minutes_ago": 3288
+        },
+        {
+          "author": "Lena",
+          "body": "Planning notes are in the wiki under Sprint 42",
+          "minutes_ago": 3182
+        },
+        {
+          "author": "Omar",
+          "body": "Heads up: staging will be down for ~15 minutes at 13:00 for the database upgrade",
+          "minutes_ago": 3178
+        },
+        {
+          "author": "Sara",
+          "body": "Good to know, I'll hold off on the QA pass until after",
+          "minutes_ago": 3177
+        },
+        {
+          "author": "Omar",
+          "body": "Staging is back ✅ Upgrade went fine",
+          "minutes_ago": 3039
+        },
+        {
+          "author": "Daniel",
+          "body": "Nice work Omar",
+          "minutes_ago": 3038
+        },
+        {
+          "author": "Priya",
+          "body": "Anyone up for lunch at the new ramen place tomorrow?",
+          "minutes_ago": 2840
+        },
+        {
+          "author": "Tom",
+          "body": "Yes please 🍜",
+          "minutes_ago": 2839
+        },
+        {
+          "author": "Lena",
+          "body": "Count me in",
+          "minutes_ago": 2839
+        },
+        {
+          "author": "Sara",
+          "body": "Can't tomorrow, but save me a recommendation",
+          "minutes_ago": 2837
+        },
+        {
+          "author": "Tom",
+          "body": "Coffee machine on the 3rd floor is fixed, celebrations all around ☕",
+          "minutes_ago": 1873
+        },
+        {
+          "author": "Priya",
+          "body": "Best news of the week",
+          "minutes_ago": 1871
+        },
+        {
+          "author": "Daniel",
+          "body": "Customer demo moved to Friday 14:00. Sara, Omar - can you both join?",
+          "minutes_ago": 1830
+        },
+        {
+          "author": "Sara",
+          "body": "Yes, I'll walk them through the new dashboard",
+          "minutes_ago": 1829
+        },
+        {
+          "author": "Omar",
+          "body": "I'll be there. I'll make sure the demo account has fresh data",
+          "minutes_ago": 1827
+        },
+        {
+          "author": "Lena",
+          "body": "Quick poll: do we want the team offsite in March or April?",
+          "minutes_ago": 1725
+        },
+        {
+          "author": "Tom",
+          "body": "April, March is release month",
+          "minutes_ago": 1724
+        },
+        {
+          "author": "Priya",
+          "body": "April 👍",
+          "minutes_ago": 1724
+        },
+        {
+          "author": "Daniel",
+          "body": "April works for me too",
+          "minutes_ago": 1722
+        },
+        {
+          "author": "Lena",
+          "body": "April it is, I'll start looking at venues",
+          "minutes_ago": 1720
+        },
+        {
+          "author": "Omar",
+          "body": "Release 2.8 is out 🚀 Changelog: https://example.com/changelog",
+          "minutes_ago": 1558
+        },
+        {
+          "author": "Sara",
+          "body": "🎉🎉",
+          "minutes_ago": 1557
+        },
+        {
+          "author": "Tom",
+          "body": "Smooth one, zero rollbacks",
+          "minutes_ago": 1557
+        },
+        {
+          "author": "Daniel",
+          "body": "Thanks everyone, great teamwork this sprint",
+          "minutes_ago": 1555
+        },
+        {
+          "author": "Priya",
+          "body": "Reminder: no meetings tomorrow afternoon, it's focus time 🙏",
+          "minutes_ago": 1350
+        },
+        {
+          "author": "Lena",
+          "body": "Good morning! The venue shortlist for the offsite is in the shared folder",
+          "minutes_ago": 425
+        },
+        {
+          "author": "Daniel",
+          "body": "Looks great. The lake house one 😍",
+          "minutes_ago": 422
+        },
+        {
+          "author": "Tom",
+          "body": "+1 for the lake house",
+          "minutes_ago": 420
+        },
+        {
+          "author": "Sara",
+          "body": "Did anyone else get logged out of the VPN this morning?",
+          "minutes_ago": 400
+        },
+        {
+          "author": "Omar",
+          "body": "Yes, IT rotated the certificates. Reconnecting fixes it",
+          "minutes_ago": 399
+        },
+        {
+          "author": "Sara",
+          "body": "That worked, thanks!",
+          "minutes_ago": 398
+        },
+        {
+          "author": "Priya",
+          "body": "New hire alert: Jonas joins the design team next week, say hi when you see him 👋",
+          "minutes_ago": 315
+        },
+        {
+          "author": "Tom",
+          "body": "Welcome Jonas!",
+          "minutes_ago": 314
+        },
+        {
+          "author": "Daniel",
+          "body": "Lunch & learn at 12:30 today: \"Accessibility in 20 minutes\" by Priya",
+          "minutes_ago": 270
+        },
+        {
+          "author": "Lena",
+          "body": "Saving a seat in the front row",
+          "minutes_ago": 269
+        },
+        {
+          "author": "Sara",
+          "body": "That talk was really good, slides please?",
+          "minutes_ago": 165
+        },
+        {
+          "author": "Priya",
+          "body": "Uploaded to the wiki, link is in #design",
+          "minutes_ago": 163
+        },
+        {
+          "author": "Omar",
+          "body": "Friendly reminder to fill in your timesheets before the end of the day ⏰",
+          "minutes_ago": 50
+        },
+        {
+          "author": "Tom",
+          "body": "Done ✅",
+          "minutes_ago": 48
+        }
+      ]
+    },
+    {
+      "name": "frontend",
+      "description": "Angular, CSS and everything in the browser",
+      "messages": [
+        {
+          "author": "Sara",
+          "body": "Has anyone tried the new signal-based forms in Angular yet?",
+          "minutes_ago": 4668
+        },
+        {
+          "author": "Tom",
+          "body": "Played with them on a side project. Really nice with typed models",
+          "minutes_ago": 4665
+        },
+        {
+          "author": "Sara",
+          "body": "Thinking of using them for the settings page rewrite",
+          "minutes_ago": 4664
+        },
+        {
+          "author": "Tom",
+          "body": "Go for it, just keep the old form behind a flag for a sprint",
+          "minutes_ago": 4662
+        },
+        {
+          "author": "Daniel",
+          "body": "The bundle size jumped 40kB after the chart library update 😬",
+          "minutes_ago": 2970
+        },
+        {
+          "author": "Tom",
+          "body": "Probably the date adapter, it pulls in every locale. I'll lazy load the reports route",
+          "minutes_ago": 2966
+        },
+        {
+          "author": "Tom",
+          "body": "Done: reports is lazy now, initial bundle is back to 312kB",
+          "minutes_ago": 2890
+        },
+        {
+          "author": "Daniel",
+          "body": "🙏",
+          "minutes_ago": 2889
+        },
+        {
+          "author": "Sara",
+          "body": "PR for the onboarding flow is up, would love a review: #482",
+          "minutes_ago": 1795
+        },
+        {
+          "author": "Tom",
+          "body": "Left a few comments, mostly naming. The stepper animation is slick",
+          "minutes_ago": 1760
+        },
+        {
+          "author": "Sara",
+          "body": "Thanks! Fixing now",
+          "minutes_ago": 1758
+        },
+        {
+          "author": "Lena",
+          "body": "Is the dark mode toggle supposed to persist after reload? It resets for me on Safari",
+          "minutes_ago": 1610
+        },
+        {
+          "author": "Sara",
+          "body": "Good catch, the localStorage write never ran on Safari. Fixed in #485",
+          "minutes_ago": 1595
+        },
+        {
+          "author": "Tom",
+          "body": "TIL :has() works in every browser we support now. Goodbye, parent class hacks",
+          "minutes_ago": 380
+        },
+        {
+          "author": "Sara",
+          "body": "Finally! Using it for the form field error states",
+          "minutes_ago": 378
+        },
+        {
+          "author": "Daniel",
+          "body": "Can someone pair with me on the flaky e2e test in checkout? It fails 1 in 5 runs",
+          "minutes_ago": 295
+        },
+        {
+          "author": "Tom",
+          "body": "I'll take it after lunch. My bet is the animation on the toast",
+          "minutes_ago": 293
+        },
+        {
+          "author": "Tom",
+          "body": "It was the toast 😅 Added a wait for the animation end, 50 green runs in a row",
+          "minutes_ago": 100
+        },
+        {
+          "author": "Daniel",
+          "body": "Legend. Thank you!",
+          "minutes_ago": 99
+        }
+      ]
+    },
+    {
+      "name": "backend",
+      "description": "APIs, databases and deploys",
+      "messages": [
+        {
+          "author": "Omar",
+          "body": "Moving the background jobs from cron to a proper queue this sprint",
+          "minutes_ago": 4710
+        },
+        {
+          "author": "Daniel",
+          "body": "Which one, Celery or something lighter?",
+          "minutes_ago": 4707
+        },
+        {
+          "author": "Omar",
+          "body": "Starting with RQ, the jobs are simple and we already run Redis",
+          "minutes_ago": 4705
+        },
+        {
+          "author": "Daniel",
+          "body": "The /reports endpoint takes 2.3s on big accounts",
+          "minutes_ago": 3140
+        },
+        {
+          "author": "Omar",
+          "body": "Missing index on events.account_id. Adding it, the migration is in review",
+          "minutes_ago": 3128
+        },
+        {
+          "author": "Omar",
+          "body": "p95 went from 2.3s to 180ms after the index ⚡",
+          "minutes_ago": 2935
+        },
+        {
+          "author": "Daniel",
+          "body": "That's a nice graph",
+          "minutes_ago": 2934
+        },
+        {
+          "author": "Priya",
+          "body": "Can the API return the user's timezone? Design wants local times in the activity feed",
+          "minutes_ago": 1848
+        },
+        {
+          "author": "Omar",
+          "body": "It's on the profile already, I'll add it to the /me response",
+          "minutes_ago": 1840
+        },
+        {
+          "author": "Daniel",
+          "body": "The websocket gateway restarted twice last night, looking at the logs now",
+          "minutes_ago": 1396
+        },
+        {
+          "author": "Daniel",
+          "body": "Memory leak in the presence tracker, connections were never removed on timeout. Patch is up",
+          "minutes_ago": 1378
+        },
+        {
+          "author": "Omar",
+          "body": "Rotating the API keys for the payment sandbox at 15:00, ping me if your local env breaks",
+          "minutes_ago": 345
+        },
+        {
+          "author": "Tom",
+          "body": "Is there a Postman collection for the new endpoints?",
+          "minutes_ago": 330
+        },
+        {
+          "author": "Omar",
+          "body": "Even better, the OpenAPI docs are at /docs on staging",
+          "minutes_ago": 328
+        },
+        {
+          "author": "Daniel",
+          "body": "Pagination on /messages switched to cursors, no more duplicates when new rows arrive",
+          "minutes_ago": 140
+        }
+      ]
+    },
+    {
+      "name": "design",
+      "description": "Mockups, feedback and design system talk",
+      "messages": [
+        {
+          "author": "Priya",
+          "body": "First pass of the new empty states is up for feedback 🎨",
+          "minutes_ago": 4620
+        },
+        {
+          "author": "Lena",
+          "body": "Love the illustrations. The \"no results\" one feels a bit sad though 😄",
+          "minutes_ago": 4608
+        },
+        {
+          "author": "Priya",
+          "body": "Ha, fair. I'll give the little robot a smile",
+          "minutes_ago": 4606
+        },
+        {
+          "author": "Sara",
+          "body": "Are we keeping 14px as the base size on mobile?",
+          "minutes_ago": 3220
+        },
+        {
+          "author": "Priya",
+          "body": "Moving to 16px, it fixes the iOS zoom on inputs too",
+          "minutes_ago": 3215
+        },
+        {
+          "author": "Sara",
+          "body": "Perfect, I'll update the tokens",
+          "minutes_ago": 3214
+        },
+        {
+          "author": "Lena",
+          "body": "Contrast check: the muted text on grey cards is 3.9:1, we need 4.5",
+          "minutes_ago": 1470
+        },
+        {
+          "author": "Priya",
+          "body": "Darkened it one step in the palette, now it's 4.8:1 ✅",
+          "minutes_ago": 1459
+        },
+        {
+          "author": "Priya",
+          "body": "Slides from the accessibility talk: https://example.com/a11y-slides",
+          "minutes_ago": 163
+        },
+        {
+          "author": "Lena",
+          "body": "Thank you! The focus ring part was eye opening",
+          "minutes_ago": 150
+        },
+        {
+          "author": "Sara",
+          "body": "Could we get a quick review of the settings page spacing? Screenshots are in Figma",
+          "minutes_ago": 115
+        },
+        {
+          "author": "Priya",
+          "body": "Looks clean. Maybe 24px between sections instead of 16?",
+          "minutes_ago": 98
+        }
+      ]
+    },
+    {
+      "name": "random",
+      "description": "Coffee, weekend plans and cat photos",
+      "messages": [
+        {
+          "author": "Tom",
+          "body": "Weekend plans? I'm finally trying the bouldering gym 🧗",
+          "minutes_ago": 4190
+        },
+        {
+          "author": "Lena",
+          "body": "Farmers market and a very long nap",
+          "minutes_ago": 4188
+        },
+        {
+          "author": "Omar",
+          "body": "Painting the kitchen. Send help 🎨",
+          "minutes_ago": 4185
+        },
+        {
+          "author": "Priya",
+          "body": "The ramen place was amazing, get the spicy miso 🍜🔥",
+          "minutes_ago": 3090
+        },
+        {
+          "author": "Sara",
+          "body": "Noted for next time!",
+          "minutes_ago": 3089
+        },
+        {
+          "author": "Daniel",
+          "body": "My cat just walked across the keyboard and pushed to a branch 🐈",
+          "minutes_ago": 1635
+        },
+        {
+          "author": "Tom",
+          "body": "Ship it",
+          "minutes_ago": 1634
+        },
+        {
+          "author": "Lena",
+          "body": "Best commit message of the year",
+          "minutes_ago": 1634
+        },
+        {
+          "author": "Omar",
+          "body": "Book recommendations for a long flight?",
+          "minutes_ago": 230
+        },
+        {
+          "author": "Lena",
+          "body": "\"Project Hail Mary\" if you haven't read it",
+          "minutes_ago": 226
+        },
+        {
+          "author": "Tom",
+          "body": "Seconded, it's great",
+          "minutes_ago": 225
+        },
+        {
+          "author": "Omar",
+          "body": "Downloaded, thanks 📚",
+          "minutes_ago": 220
+        }
+      ]
+    }
+  ]
+}
