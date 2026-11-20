@@ -1,0 +1,139 @@
+:host {
+  display: block;
+  padding: 0 20px 12px;
+}
+
+.box {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+
+  &:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+  }
+
+  &.invalid {
+    border-color: var(--danger);
+  }
+}
+
+textarea {
+  flex: 1;
+  min-width: 0;
+  min-height: 36px;
+  max-height: 180px;
+  padding: 7px 4px;
+  border: 0;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font-size: 15px;
+  line-height: 22px;
+
+  &::placeholder {
+    color: var(--text-faint);
+  }
+}
+
+.send {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+
+  &:disabled {
+    background: var(--surface-2);
+    color: var(--text-faint);
+    cursor: not-allowed;
+  }
+}
+
+.picker-wrap {
+  position: relative;
+}
+
+.picker {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(8, 36px);
+  gap: 2px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow-lg);
+
+  button {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--surface-2);
+    }
+  }
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 20px;
+  padding: 4px 4px 0;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+kbd {
+  font-family: inherit;
+  font-size: 11px;
+  padding: 0 4px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+@media (max-width: 640px) {
+  :host {
+    padding: 0 10px 8px;
+  }
+
+  .hint {
+    display: none;
+  }
+
+  .picker {
+    grid-template-columns: repeat(8, 32px);
+
+    button {
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+    }
+  }
+}

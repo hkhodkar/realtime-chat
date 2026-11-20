@@ -1,0 +1,101 @@
+<div class="join">
+  <section class="intro">
+    <div class="brand">
+      <span class="logo">
+        <svg
+          viewBox="0 0 24 24"
+          width="22"
+          height="22"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+      </span>
+      Huddle
+    </div>
+    <h1>Team chat that feels instant.</h1>
+    <p>Rooms, live messages, presence and typing indicators, powered by WebSockets.</p>
+
+    <div class="preview-chat" aria-hidden="true">
+      <div class="bubble">
+        <app-avatar name="Sara" color="#db2777" [size]="32" />
+        <div><strong>Sara</strong><span>PR for the onboarding flow is up 🚀</span></div>
+      </div>
+      <div class="bubble">
+        <app-avatar name="Tom" color="#2f9e44" [size]="32" />
+        <div><strong>Tom</strong><span>Reviewing it now, looks slick</span></div>
+      </div>
+      <div class="typing"><span></span><span></span><span></span> Priya is typing…</div>
+    </div>
+  </section>
+
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <h2>Pick a username</h2>
+    <p class="lead">No password needed. Your name is reserved for you while you are online.</p>
+
+    @if (reason() === 'taken') {
+      <p class="form-error" role="alert">
+        Someone else took your username while you were away. Please pick another one.
+      </p>
+    }
+    @if (error()) {
+      <p class="form-error" role="alert">{{ error() }}</p>
+    }
+
+    <div class="field">
+      <label for="username">Username</label>
+      <input
+        id="username"
+        class="input"
+        formControlName="username"
+        autocomplete="nickname"
+        autocapitalize="off"
+        spellcheck="false"
+        placeholder="e.g. alex.m"
+        [class.invalid]="usernameError()"
+        [attr.aria-invalid]="!!usernameError()"
+        aria-describedby="username-meta"
+      />
+      <div class="field-meta" id="username-meta">
+        @if (usernameError(); as message) {
+          <span class="field-error">{{ message }}</span>
+        } @else if (checking()) {
+          <span>Checking availability…</span>
+        } @else if (available()) {
+          <span class="ok">✓ Available</span>
+        } @else {
+          <span>2–20 characters: letters, numbers, dots, dashes or underscores</span>
+        }
+      </div>
+    </div>
+
+    <fieldset class="field">
+      <legend class="label">Avatar color</legend>
+      <div class="swatches">
+        @for (color of colors; track color) {
+          <label class="swatch" [style.--swatch]="color" [title]="color">
+            <input type="radio" formControlName="color" [value]="color" class="sr-only" />
+            <span class="dot"></span>
+            <span class="sr-only">Color {{ color }}</span>
+          </label>
+        }
+      </div>
+    </fieldset>
+
+    <div class="me">
+      <app-avatar [name]="previewName()" [color]="previewColor()" [size]="40" />
+      <div>
+        <strong>{{ previewName() }}</strong>
+        <span>This is how others will see you</span>
+      </div>
+    </div>
+
+    <button class="btn btn-primary submit" type="submit" [disabled]="submitting()">
+      {{ submitting() ? 'Joining…' : 'Join the chat' }}
+    </button>
+  </form>
+</div>

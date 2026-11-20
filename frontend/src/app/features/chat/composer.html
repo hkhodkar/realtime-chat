@@ -1,0 +1,55 @@
+<form class="composer" [class.offline]="!connected()" (submit)="$event.preventDefault(); submit()">
+  <div class="box" [class.invalid]="tooLong()">
+    <div class="picker-wrap" #picker>
+      <button
+        type="button"
+        class="icon-btn"
+        aria-label="Insert emoji"
+        title="Insert emoji"
+        [attr.aria-expanded]="pickerOpen()"
+        (click)="togglePicker()"
+      >
+        <app-icon name="smile" />
+      </button>
+      @if (pickerOpen()) {
+        <div class="picker" role="dialog" aria-label="Emoji">
+          @for (item of emoji; track item) {
+            <button type="button" (click)="insert(item)" [attr.aria-label]="item">
+              {{ item }}
+            </button>
+          }
+        </div>
+      }
+    </div>
+
+    <label class="sr-only" for="message-input">Message</label>
+    <textarea
+      #textarea
+      id="message-input"
+      rows="1"
+      [placeholder]="placeholder()"
+      [attr.aria-invalid]="tooLong()"
+      aria-describedby="composer-hint"
+      (input)="onInput($event)"
+      (keydown)="onKeydown($event)"
+    ></textarea>
+
+    <button
+      type="submit"
+      class="send"
+      [disabled]="!canSend()"
+      aria-label="Send message"
+      title="Send"
+    >
+      <app-icon name="send" [size]="18" />
+    </button>
+  </div>
+  <div class="meta" id="composer-hint">
+    <span class="hint"
+      ><kbd>Enter</kbd> to send · <kbd>Shift</kbd> + <kbd>Enter</kbd> for a new line</span
+    >
+    @if (showCounter()) {
+      <span class="counter" [class.over]="tooLong()">{{ length() }} / {{ max }}</span>
+    }
+  </div>
+</form>

@@ -1,0 +1,97 @@
+<div
+  class="viewport scroll"
+  #viewport
+  (scroll)="onScroll()"
+  role="log"
+  aria-live="polite"
+  aria-relevant="additions"
+>
+  <div class="inner">
+    @if (loading() && !messages().length) {
+      @for (i of [1, 2, 3, 4, 5]; track i) {
+        <div class="skeleton">
+          <span class="circle"></span>
+          <span class="lines"><span></span><span></span></span>
+        </div>
+      }
+    } @else {
+      <div class="history-top">
+        @if (loadingOlder()) {
+          <span class="loading">Loading older messages…</span>
+        } @else if (hasMore()) {
+          <button type="button" class="older" (click)="requestOlder()">Load older messages</button>
+        } @else if (messages().length) {
+          <span class="beginning">This is the beginning of the room</span>
+        }
+      </div>
+
+      @for (block of blocks(); track block.key) {
+        @switch (block.type) {
+          @case ('day') {
+            <div class="day" role="separator">
+              <span>{{ block.label }}</span>
+            </div>
+          }
+          @case ('system') {
+            <div class="system">
+              <span>{{ block.text }}</span>
+              <time [attr.datetime]="block.at">{{ clock(block.at) }}</time>
+            </div>
+          }
+          @case ('group') {
+            <article class="group" [class.mine]="block.author === me()">
+              <app-avatar [name]="block.author" [color]="block.color" [size]="38" />
+              <div class="content">
+                <header>
+                  <strong>{{ block.author }}</strong>
+                  @if (block.author === me()) {
+                    <span class="you">you</span>
+                  }
+                  <time [attr.datetime]="block.at" [title]="fullTime(block.at)">{{
+                    clock(block.at)
+                  }}</time>
+                </header>
+                @for (message of block.messages; track message.id; let firstLine = $first) {
+                  <div class="line">
+                    @if (!firstLine) {
+                      <time
+                        class="hover-time"
+                        [attr.datetime]="message.created_at"
+                        [title]="fullTime(message.created_at)"
+                        >{{ clock(message.created_at) }}</time
+                      >
+                    }
+                    <p class="text" [class.jumbo]="jumbo(message.body)">
+                      @for (part of linkify(message.body); track $index) {
+                        @if (part.href) {
+                          <a [href]="part.href" target="_blank" rel="noopener noreferrer">{{
+                            part.text
+                          }}</a>
+                        } @else {
+                          {{ part.text }}
+                        }
+                      }
+                    </p>
+                  </div>
+                }
+              </div>
+            </article>
+          }
+        }
+      } @empty {
+        <div class="empty">
+          <div class="empty-icon"><app-icon name="chat" [size]="28" /></div>
+          <strong>No messages yet</strong>
+          <span>Say hello and get the conversation going 👋</span>
+        </div>
+      }
+    }
+  </div>
+</div>
+
+@if (unseen() > 0) {
+  <button type="button" class="pill" (click)="jumpToLatest()">
+    <app-icon name="down" [size]="16" />
+    {{ unseen() }} new {{ unseen() === 1 ? 'message' : 'messages' }}
+  </button>
+}

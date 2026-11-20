@@ -1,0 +1,80 @@
+<div class="head">
+  <div class="brand">
+    <span class="logo"><app-icon name="chat" [size]="18" /></span>
+    Huddle
+  </div>
+  <button
+    type="button"
+    class="icon-btn close"
+    aria-label="Close room list"
+    (click)="closeDrawer.emit()"
+  >
+    <app-icon name="close" />
+  </button>
+</div>
+
+<div class="section-title">
+  <span>Rooms</span>
+  <button
+    type="button"
+    class="icon-btn add"
+    aria-label="Create a room"
+    title="Create a room"
+    (click)="createRoom.emit()"
+  >
+    <app-icon name="plus" [size]="18" />
+  </button>
+</div>
+
+<nav class="rooms scroll" aria-label="Rooms">
+  @for (room of rooms(); track room.id) {
+    <a
+      class="room"
+      [routerLink]="['/rooms', room.name]"
+      routerLinkActive="active"
+      [attr.aria-current]="room.id === activeId() ? 'page' : null"
+      (click)="selected.emit()"
+    >
+      <span class="hash"><app-icon name="hash" [size]="16" /></span>
+      <span class="body">
+        <span class="row">
+          <span class="name" [class.bold]="unread()[room.id]">{{ room.name }}</span>
+          <span class="time">{{ time(room) }}</span>
+        </span>
+        <span class="row">
+          <span class="preview">{{ preview(room) }}</span>
+          @if (unread()[room.id]; as count) {
+            <span class="badge" [attr.aria-label]="count + ' unread'">{{
+              count > 99 ? '99+' : count
+            }}</span>
+          }
+        </span>
+      </span>
+    </a>
+  } @empty {
+    @if (loading()) {
+      @for (i of [1, 2, 3, 4]; track i) {
+        <div class="room skeleton"><span></span></div>
+      }
+    } @else {
+      <p class="empty">No rooms yet. Create the first one!</p>
+    }
+  }
+</nav>
+
+<div class="me">
+  <app-avatar [name]="user().username" [color]="user().color" [size]="34" />
+  <div class="who">
+    <strong>{{ user().username }}</strong>
+    <span class="status" [attr.data-status]="status()"><i></i>{{ statusLabel() }}</span>
+  </div>
+  <button
+    type="button"
+    class="icon-btn"
+    aria-label="Switch user"
+    title="Switch user"
+    (click)="switchUser.emit()"
+  >
+    <app-icon name="logout" [size]="18" />
+  </button>
+</div>

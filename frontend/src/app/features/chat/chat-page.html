@@ -1,0 +1,146 @@
+<div class="layout" [class.drawer-open]="drawerOpen()" [class.members-open]="membersOpen()">
+  <aside class="sidebar">
+    <app-room-sidebar
+      [rooms]="rooms.rooms()"
+      [unread]="rooms.unread()"
+      [activeId]="current()?.id ?? null"
+      [user]="user()"
+      [status]="room.status()"
+      [loading]="rooms.loading()"
+      (createRoom)="openCreate()"
+      (selected)="drawerOpen.set(false)"
+      (closeDrawer)="drawerOpen.set(false)"
+      (switchUser)="switchUser()"
+    />
+  </aside>
+  <div
+    class="scrim"
+    (click)="drawerOpen.set(false); membersOpen.set(false)"
+    aria-hidden="true"
+  ></div>
+
+  <section class="main">
+    <header class="room-head">
+      <button
+        type="button"
+        class="icon-btn menu"
+        aria-label="Open room list"
+        (click)="drawerOpen.set(true)"
+      >
+        <app-icon name="menu" />
+        @if (rooms.totalUnread()) {
+          <span class="menu-dot" aria-hidden="true"></span>
+        }
+      </button>
+      @if (current(); as active) {
+        <div class="title">
+          <h1><span class="hash">#</span>{{ active.name }}</h1>
+          @if (active.description) {
+            <p>{{ active.description }}</p>
+          }
+        </div>
+        <button
+          type="button"
+          class="online-btn"
+          [attr.aria-expanded]="membersOpen()"
+          aria-label="Show who is online"
+          (click)="membersOpen.set(!membersOpen())"
+        >
+          <app-icon name="users" [size]="18" />
+          <span>{{ room.online().length || active.online_count }}</span>
+        </button>
+      } @else {
+        <div class="title">
+          <h1>{{ notFound() ? 'Room not found' : 'Loading…' }}</h1>
+        </div>
+      }
+    </header>
+
+    @if (rooms.error(); as message) {
+      <div class="state">
+        <strong>Could not load the rooms</strong>
+        <span>{{ message }}</span>
+        <button type="button" class="btn btn-ghost" (click)="rooms.load(true)">Try again</button>
+      </div>
+    } @else if (notFound()) {
+      <div class="state">
+        <strong>#{{ name() }} does not exist</strong>
+        <span>It may have been renamed, or the link has a typo.</span>
+        @if (rooms.rooms().length) {
+          <a class="btn btn-primary" [routerLink]="['/rooms', rooms.rooms()[0].name]"
+            >Go to #{{ rooms.rooms()[0].name }}</a
+          >
+        } @else {
+          <button type="button" class="btn btn-primary" (click)="openCreate()">
+            Create a room
+          </button>
+        }
+      </div>
+    } @else if (current(); as active) {
+      <app-connection-banner
+        [status]="room.status()"
+        [retryAt]="room.retryAt()"
+        (retry)="room.retryNow()"
+      />
+
+      @if (room.error(); as message) {
+        <div class="state">
+          <strong>Something went wrong</strong>
+          <span>{{ message }}</span>
+        </div>
+      } @else {
+        <app-message-list
+          [blocks]="room.timeline()"
+          [messages]="room.messages()"
+          [roomId]="active.id"
+          [me]="user().username"
+          [hasMore]="room.hasMore()"
+          [loading]="room.loading()"
+          [loadingOlder]="room.loadingOlder()"
+          (loadOlder)="room.loadOlder()"
+        />
+      }
+
+      <div class="below">
+        <div class="typing" aria-live="polite">
+          @if (room.typing(); as label) {
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            {{ label }}
+          }
+        </div>
+        @if (room.notice(); as notice) {
+          <div class="notice" role="alert">
+            <span>{{ notice }}</span>
+            <button
+              type="button"
+              class="icon-btn"
+              aria-label="Dismiss"
+              (click)="room.dismissNotice()"
+            >
+              <app-icon name="close" [size]="16" />
+            </button>
+          </div>
+        }
+      </div>
+
+      <app-composer
+        [roomName]="active.name"
+        [connected]="room.status() === 'open'"
+        (send)="send($event)"
+        (typing)="room.notifyTyping()"
+      />
+    }
+  </section>
+
+  <aside class="members">
+    <app-members-panel
+      [users]="room.online()"
+      [me]="user().username"
+      (closed)="membersOpen.set(false)"
+    />
+  </aside>
+</div>
+
+@if (creating()) {
+  <app-create-room-dialog (closed)="creating.set(false)" (created)="roomCreated($event)" />
+}
