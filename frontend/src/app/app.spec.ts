@@ -1,23 +1,23 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { App } from './app';
+import { DemoMode } from './core/mock/demo-mode';
+import { MOCK_BOTS } from './core/mock/mock-hub';
 
 describe('App', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [App],
-    }).compileComponents();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [provideRouter([]), { provide: MOCK_BOTS, useValue: false }],
+    });
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it('should render title', async () => {
+  it('shows the demo banner only in demo mode', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, frontend');
+    expect(fixture.nativeElement.querySelector('.banner')).toBeNull();
+
+    TestBed.inject(DemoMode).enable();
+    await fixture.whenStable();
+    expect(fixture.nativeElement.querySelector('.banner')?.textContent).toContain('Demo mode');
   });
 });
